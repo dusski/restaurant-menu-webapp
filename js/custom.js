@@ -62,20 +62,7 @@ $(document).ready(function () {
 
 
 
-  //	Generating elements
-  //		for (var i = 0; i < artikli.artikl.length; i++) {
-  //			var node = document.createElement("li"); //creates li node
-  //			var but = document.createElement("button");
-  //			var textnode = document.createTextNode(artikli.artikl[i].naziv); //creates text node
-  //			but.appendChild(textnode); // appends text to button
-  //			node.appendChild(but); //appends button to li
-  //			$("#articles").append(node); //appends li to ul #articles
-  //			var listItem = document.getElementsByTagName("LI");
-  //			var buttonItem = document.getElementsByTagName("BUTTON");
-  //			listItem[i].className = "list-item";
-  //buttonItem[i].className = "btn btn-lg btn-primary btn-category";
-  //        document.getElementsByTagName("BUTTON")[i].addEventListener("click", counterUp);
-  //		}
+
 
   $(".val").click(function (e) {
     var $this = $(this);
@@ -122,7 +109,7 @@ $(document).ready(function () {
       // treba da iskenira order i da vidi da ne postoji već element sa istim id-jem,
       // ako postoji, njega zameni, a ako ne postoji, kreira ga
       // var forma = $("#order")[0];
-      console.log(plus.id);
+      Naruci(plus.id);
 
 
     } else if (this.innerHTML == "-") {
@@ -153,41 +140,51 @@ $(document).ready(function () {
 
 });
 
-function Naruci() {
+function Naruci(element_id) {
   var naruci = $(".narudzbina");
-  for (var i = 0; i < naruci.length; i++) {
-    if (naruci[i].value > 0) {
-      // console.log(naruci[i]);
-      // console.log(naruci[i].value);
+      for (var i = 0; i < naruci.length; i++) {
+        if (naruci[i].value > 0) {
+          // console.log(naruci[i]);
+          // console.log(naruci[i].value);
 
-      $this = $(naruci[i]);
+          $this = $(naruci[i]);
 
-      $this.clone()
-        .appendTo("#order")
-        .removeClass("narudzbina")
-        .insertBefore(".order-submit");
+          $this.clone()
+            .appendTo("#order")
+            .removeClass("narudzbina")
+            .insertBefore(".order-submit");
 
+        }
+      }
+
+
+
+  var forma = $("#order")[0];
+  for (var j = 0; j < forma.length -1; j++) {
+    // console.log($this);
+    if (element_id == forma[j].id) {
+      console.log("već postoji");
+
+    } else {
+      console.log("ne postoji");
+      
     }
   }
 
-  var forma = $("#order")[0];
-  for (var j = 0; j < forma.length - 1; j++) {
-    // console.log($this);
-    console.log(forma[j].id);
-    // forma.forEach(function(element) {
-    //   console.log(this.id);
-    // }, this);
+  // forma.forEach(function(element) {
+  //   console.log(this.id);
+  // }, this);
 
-    // forma.forEach(function (element) {
-    //   console.log(element.id);
-    // })
-
-
-  }
-
+  // forma.forEach(function (element) {
+  //   console.log(element.id);
+  // })
 
 
 }
+
+
+
+
 
 
 

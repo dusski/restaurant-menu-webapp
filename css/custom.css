@@ -26,10 +26,10 @@ h2{margin: 0px;}
 /* Category and buttons */
 
 /*.kategorija, .podkategorija, .vrsta-proizvoda, .proizvod {font-size: 35px;margin: 5px 0px;}*/
-.tip, .tip:hover, .tip:active:hover {background-color: #47AAFF; border-color: #47AAFF;}
-.kategorija, .kategorija:hover, .kategorija:active:hover {background-color: #337AB7; border-color: #337AB7;}
-.vrsta, .vrsta:hover, .vrsta:active:hover {background-color: #24557F; border-color: #24557F;}
-.proizvod, .proizvod:hover, .proizvod:active:hover {background-color: #122A40; border-color: #122A40;}
+.tip, .tip:hover, .tip:active:hover, .tip:focus {background-color: #47AAFF; border-color: #47AAFF;}
+.kategorija, .kategorija:hover, .kategorija:active:hover, .kategorija:focus {background-color: #337AB7; border-color: #337AB7;}
+.vrsta, .vrsta:hover, .vrsta:active:hover, .vrsta:focus {background-color: #24557F; border-color: #24557F;}
+.proizvod, .proizvod:hover, .proizvod:active:hover, .proizvod:focus {background-color: #122A40; border-color: #122A40;}
 
 .proizvod .btn-group {display: inline-block;}
 .list-group {list-style: none;}
