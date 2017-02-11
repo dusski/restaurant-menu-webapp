@@ -19,7 +19,6 @@ a, a:hover, a:visited, a:focus {text-decoration: none;color:#222222;}
 ul {list-style: none;padding: 0;}
 ul .inner {overflow: hidden;display: none;}
 ul .inner.show {/*display: block;*/    /*margin-top: -20px;*/}
-/*.open {display:block;}*/
 h2{margin: 0px;}
 
 

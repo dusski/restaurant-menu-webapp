@@ -142,34 +142,43 @@ $(document).ready(function () {
 
 function Naruci(element_id) {
   var naruci = $(".narudzbina");
-      for (var i = 0; i < naruci.length; i++) {
-        if (naruci[i].value > 0) {
-          // console.log(naruci[i]);
-          // console.log(naruci[i].value);
+  for (var i = 0; i < naruci.length; i++) {
+    if (naruci[i].value > 0) {
+      // console.log(naruci[i]);
+      // console.log(naruci[i].value);
+      $this = $(naruci[i]);
 
-          $this = $(naruci[i]);
+      var forma = $("#order")[0];
+
+      // ovaj deo je problematičan, ako ukloniš "- 1" nastaje beskonačna petlja
+      // ako ostaviš "- 1", preskače skroz i ne klonira element
+      for (var j = 0; j < forma.length - 1; j++) {
+        // console.log($this);
+        if (element_id == forma[j].id) {
+          console.log("već postoji");
+
+        } else {
+
 
           $this.clone()
             .appendTo("#order")
             .removeClass("narudzbina")
             .insertBefore(".order-submit");
 
+
+
         }
       }
 
 
-
-  var forma = $("#order")[0];
-  for (var j = 0; j < forma.length -1; j++) {
-    // console.log($this);
-    if (element_id == forma[j].id) {
-      console.log("već postoji");
-
-    } else {
-      console.log("ne postoji");
-      
     }
   }
+
+
+
+
+
+
 
   // forma.forEach(function(element) {
   //   console.log(this.id);
