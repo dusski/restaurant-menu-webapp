@@ -109,13 +109,17 @@ $(document).ready(function () {
       // treba da iskenira order i da vidi da ne postoji već element sa istim id-jem,
       // ako postoji, njega zameni, a ako ne postoji, kreira ga
       // var forma = $("#order")[0];
-      Naruci(plus.id);
+      $(plus).clone()
+        .appendTo("#order")
+        .removeClass("narudzbina");
+
+      // Naruci(plus.id);
 
 
     } else if (this.innerHTML == "-") {
       // if minus clicked
 
-      console.log(minus.value);
+
 
       if (minus.value > 1) {
         minus.value--;
@@ -125,10 +129,16 @@ $(document).ready(function () {
         minus.value = 0;
         item_name.value = item_name.id;
       }
+      console.log(minus.value);
 
       //      $("#"+minus)[0].value--;
       //      
       //      console.log($("#"+minus)[0].value);
+      console.log(minus.id);
+      $("#" + minus.id).remove();
+      // ovo uklanja input element iza dugmeta
+      // promeniti da uklanja isti input element u formi
+      // http://stackoverflow.com/questions/2176986/jquery-add-id-instead-of-class
 
     } else {
       // else
@@ -141,7 +151,7 @@ $(document).ready(function () {
 });
 
 function Naruci(element_id) {
-  var naruci = $(".narudzbina");
+  /*var naruci = $(".narudzbina");
   for (var i = 0; i < naruci.length; i++) {
     if (naruci[i].value > 0) {
       // console.log(naruci[i]);
@@ -149,21 +159,26 @@ function Naruci(element_id) {
       $this = $(naruci[i]);
 
       var forma = $("#order")[0];
+      // $(forma).shift();
+
+      $this.clone()
+        .appendTo("#order")
+        .removeClass("narudzbina");
 
       // ovaj deo je problematičan, ako ukloniš "- 1" nastaje beskonačna petlja
       // ako ostaviš "- 1", preskače skroz i ne klonira element
-      for (var j = 0; j < forma.length - 1; j++) {
+      for (var j = 1; j < forma.length; j++) {
         // console.log($this);
+
+        // .insertBefore(".order-submit");
+
         if (element_id == forma[j].id) {
           console.log("već postoji");
 
         } else {
+          console.log("ne postoji");
 
 
-          $this.clone()
-            .appendTo("#order")
-            .removeClass("narudzbina")
-            .insertBefore(".order-submit");
 
 
 
@@ -187,7 +202,7 @@ function Naruci(element_id) {
   // forma.forEach(function (element) {
   //   console.log(element.id);
   // })
-
+*/
 
 }
 
