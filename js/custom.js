@@ -109,9 +109,42 @@ $(document).ready(function () {
       // treba da iskenira order i da vidi da ne postoji već element sa istim id-jem,
       // ako postoji, njega zameni, a ako ne postoji, kreira ga
       // var forma = $("#order")[0];
+
+      //  $(plus).clone()
+      //   .appendTo("#order")
+      //   .removeClass("narudzbina")
+      //   .insertBefore(".order-submit")
+      //   .attr('id', 'nar' + plus.id);
+
+      var forma = $("#order")[0];
+      console.log(forma.length);
+      // console.log(forma[1].id=="");
+
       $(plus).clone()
         .appendTo("#order")
-        .removeClass("narudzbina");
+        .removeClass("narudzbina")
+        // .insertBefore(".order-submit")
+        .attr('id', 'nar' + plus.id);
+
+      for (var j = 0; j < forma.length; j++) {
+        console.log(forma[j].id);
+        console.log(plus.id);
+        if (forma[j].id == "") {
+          console.log('nije input element');
+
+
+
+          // continue;
+        } else if (forma[j].id == "nar" + plus.id) {
+            console.log($(forma[j]));
+            // $(forma[j]).replaceWith(plus);
+        } else {
+          // console.log('ne postoji');
+
+        }
+      }
+
+
 
       // Naruci(plus.id);
 
@@ -129,15 +162,13 @@ $(document).ready(function () {
         minus.value = 0;
         item_name.value = item_name.id;
       }
-      console.log(minus.value);
+      // console.log(minus.value);
 
       //      $("#"+minus)[0].value--;
       //      
       //      console.log($("#"+minus)[0].value);
       console.log(minus.id);
-      $("#" + minus.id).remove();
-      // ovo uklanja input element iza dugmeta
-      // promeniti da uklanja isti input element u formi
+      $("#nar" + minus.id).remove();
       // http://stackoverflow.com/questions/2176986/jquery-add-id-instead-of-class
 
     } else {
