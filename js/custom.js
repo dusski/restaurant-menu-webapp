@@ -205,23 +205,22 @@ function Naruci() {
     "idKonobara": "1",
     "idStola": "1"
   },
-  "detaljiPorudzbine": {
-    "detalji": [
-      {
-        "idProizvoda": 1,
-        "kolicina": 5
-      },
-      {
-        "idproizvoda": 2,
-        "kolicina": 3
-      },
-      {
-        "idProizvoda": 5,
-        "kolicina": 12
-      }
-    ]
-  }
+  "detaljiPorudzbine": [
+    {
+      "idProizvoda": 1,
+      "kolicina": 5
+    },
+    {
+      "idproizvoda": 2,
+      "kolicina": 3
+    },
+    {
+      "idProizvoda": 5,
+      "kolicina": 12
+    }
+  ]
 }
+
 
 
 
@@ -238,11 +237,21 @@ function Naruci() {
        { "idKonobara" : idKonobara,
        "idStola" : idStola  
       },  
-      "detaljiPorudzbine": {    
-        "detalji": narudzbina 
-      }};
+      "detaljiPorudzbine": narudzbina 
+    };
 
-      console.log(JSON.stringify(porudzbenica));
+    if (narudzbina != ""){
+      // console.log(JSON.stringify(porudzbenica));
+      $.ajax({
+        // url: 'stolovi.html',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+                alert(data.msg);
+            },
+            data: JSON.stringify(porudzbenica)
+      });
+      }
 
 }
 
