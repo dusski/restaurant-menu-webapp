@@ -164,7 +164,7 @@ $(document).ready(function () {
       //      
       //      console.log($("#"+minus)[0].value);
       console.log(minus.id);
-      $("#nar" + minus.id).remove();
+      // $("#nar" + minus.id).remove();
       // http://stackoverflow.com/questions/2176986/jquery-add-id-instead-of-class
 
     } else {
@@ -315,3 +315,4 @@ function sub() {
 
 
 // http://stackoverflow.com/questions/8517071/send-json-data-via-post-ajax-and-receive-json-response-from-controller-mvc
+// http://www.w3schools.com/jquerymobile/jquerymobile_popups.asp
