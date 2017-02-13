@@ -1,4 +1,6 @@
 var artikli = $.parseJSON('[{"tip":{"id_tipa":1,"tip":"hrana","kategorija":[{"id_kategorije":6,"kategorija":"Rostilj","id_tipa":1,"vrsta":[]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"kolaci","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"palacinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"sa kremom","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"pice","kategorija":[{"id_kategorije":3,"kategorija":"vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"grasevina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"borovnica","cena":120,"id_vrste":24}]}]}]}}]');
+var idKonobara = "1";
+var idStola = "1";
 //
 
 $(document).ready(function () {
@@ -61,9 +63,6 @@ $(document).ready(function () {
   //}).resize();
 
 
-
-
-
   $(".val").click(function (e) {
     var $this = $(this);
     //    var form_el = $("#order").children();‚‚
@@ -73,8 +72,7 @@ $(document).ready(function () {
     var plus = $this.parent().prev()[0];
     var minus = $this.parent().next().next()[0];
     var item_name = typeof ($this.parent().prev().prev()[0]) == "undefined" ? $this.parent().next()[0] : $this.parent().prev().prev()[0];
-
-
+    var postoji = [];
 
 
     if (this.innerHTML == "+") {
@@ -116,33 +114,31 @@ $(document).ready(function () {
       //   .insertBefore(".order-submit")
       //   .attr('id', 'nar' + plus.id);
 
-      var forma = $("#order")[0];
-      console.log(forma.length);
-      // console.log(forma[1].id=="");
 
-      $(plus).clone()
-        .appendTo("#order")
-        .removeClass("narudzbina")
-        // .insertBefore(".order-submit")
-        .attr('id', 'nar' + plus.id);
+      /* 
+        Umesto ovoga do sada, da prođem kroz sva input number polja na strani i da sve vrednosti veće od jedan smestim u jedan objekat i da to pošaljem.
+      */
+      // var forma = $("#order")[0];
+      // console.log(forma.length);
+      // // console.log(forma[1].id=="");
 
-      for (var j = 0; j < forma.length; j++) {
-        console.log(forma[j].id);
-        console.log(plus.id);
-        if (forma[j].id == "") {
-          console.log('nije input element');
-
-
-
-          // continue;
-        } else if (forma[j].id == "nar" + plus.id) {
-            console.log($(forma[j]));
-            // $(forma[j]).replaceWith(plus);
-        } else {
-          // console.log('ne postoji');
-
-        }
-      }
+      // for (var j = 0; j < forma.length; j++) {
+      //   console.log(forma[j].id);
+      //   console.log(plus.id);
+      //   if (forma[j].id == "nar" + plus.id) {
+      //     console.log("postoji");
+      //     // $(forma[j]).replaceWith(plus);
+      //     postoji.push(true);
+      //   } else {
+      //     // $(plus).clone()
+      //     //   .appendTo("#order")
+      //     //   .removeClass("narudzbina")
+      //     //   .insertBefore(".order-submit")
+      //     //   .attr('id', 'nar' + plus.id);
+      //     //   break;
+      //     postoji.push(false);
+      //   }
+      // }
 
 
 
@@ -181,59 +177,72 @@ $(document).ready(function () {
 
 });
 
-function Naruci(element_id) {
-  /*var naruci = $(".narudzbina");
+function Naruci() {
+  var naruci = $(".narudzbina");
+  var narudzbina = [];
   for (var i = 0; i < naruci.length; i++) {
+    
     if (naruci[i].value > 0) {
-      // console.log(naruci[i]);
+      // console.log(naruci[i].id);
       // console.log(naruci[i].value);
-      $this = $(naruci[i]);
 
-      var forma = $("#order")[0];
-      // $(forma).shift();
+      narudzbina.push({"idProizvoda" : naruci[i].id, "Kolicina" : naruci[i].value});
+      // $this = $(naruci[i]);
 
-      $this.clone()
-        .appendTo("#order")
-        .removeClass("narudzbina");
+      /*
 
-      // ovaj deo je problematičan, ako ukloniš "- 1" nastaje beskonačna petlja
-      // ako ostaviš "- 1", preskače skroz i ne klonira element
-      for (var j = 1; j < forma.length; j++) {
-        // console.log($this);
+      var loop = [];
 
-        // .insertBefore(".order-submit");
-
-        if (element_id == forma[j].id) {
-          console.log("već postoji");
-
-        } else {
-          console.log("ne postoji");
-
-
-
-
-
-        }
+      for(var x = 0; x < 10; x++){
+      loop.push({value1: "value_a_" + x , value2: "value_b_" + x});
       }
+
+      JSON.stringify({array: loop});
+
+
+      {
+  "porudzbenica": {
+    "idKonobara": "1",
+    "idStola": "1"
+  },
+  "detaljiPorudzbine": {
+    "detalji": [
+      {
+        "idProizvoda": 1,
+        "kolicina": 5
+      },
+      {
+        "idproizvoda": 2,
+        "kolicina": 3
+      },
+      {
+        "idProizvoda": 5,
+        "kolicina": 12
+      }
+    ]
+  }
+}
+
+
+
+      */
 
 
     }
+    
   }
+  // console.log(narudzbina);
+    
+     var porudzbenica = {
+       "porudzbenica": 
+       { "idKonobara" : idKonobara,
+       "idStola" : idStola  
+      },  
+      "detaljiPorudzbine": {    
+        "detalji": narudzbina 
+      }};
 
-
-
-
-
-
-
-  // forma.forEach(function(element) {
-  //   console.log(this.id);
-  // }, this);
-
-  // forma.forEach(function (element) {
-  //   console.log(element.id);
-  // })
-*/
+      console.log(JSON.stringify(porudzbenica));
 
 }
 
@@ -241,6 +250,15 @@ function Naruci(element_id) {
 
 
 
+
+
+// forma.forEach(function(element) {
+//   console.log(this.id);
+// }, this);
+
+// forma.forEach(function (element) {
+//   console.log(element.id);
+// })
 
 
 
@@ -285,3 +303,6 @@ function sub() {
   //	}
   //	item[0].value--;
 }
+
+
+// http://stackoverflow.com/questions/8517071/send-json-data-via-post-ajax-and-receive-json-response-from-controller-mvc
