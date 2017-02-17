@@ -181,12 +181,12 @@ function Naruci() {
   var naruci = $(".narudzbina");
   var narudzbina = [];
   for (var i = 0; i < naruci.length; i++) {
-    
+
     if (naruci[i].value > 0) {
       // console.log(naruci[i].id);
       // console.log(naruci[i].value);
 
-      narudzbina.push({"idProizvoda" : naruci[i].id, "Kolicina" : naruci[i].value});
+      narudzbina.push({ "idProizvoda": naruci[i].id, "Kolicina": naruci[i].value });
       // $this = $(naruci[i]);
 
       /*
@@ -228,30 +228,31 @@ function Naruci() {
 
 
     }
-    
+
   }
   // console.log(narudzbina);
-    
-     var porudzbenica = {
-       "porudzbenica": 
-       { "idKonobara" : idKonobara,
-       "idStola" : idStola  
-      },  
-      "detaljiPorudzbine": narudzbina 
-    };
 
-    if (narudzbina != ""){
-      // console.log(JSON.stringify(porudzbenica));
-      $.ajax({
-        // url: 'stolovi.html',
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-                alert(data.msg);
-            },
-            data: JSON.stringify(porudzbenica)
-      });
-      }
+  var porudzbenica = {
+    "porudzbenica":
+    {
+      "idKonobara": idKonobara,
+      "idStola": idStola
+    },
+    "detaljiPorudzbine": narudzbina
+  };
+
+  if (narudzbina != "") {
+    // console.log(JSON.stringify(porudzbenica));
+    $.ajax({
+      // url: 'stolovi.html',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        alert(data.msg);
+      },
+      data: JSON.stringify(porudzbenica)
+    });
+  }
 
 }
 
