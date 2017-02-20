@@ -1,10 +1,18 @@
 var artikli = $.parseJSON('[{"tip":{"id_tipa":1,"tip":"hrana","kategorija":[{"id_kategorije":6,"kategorija":"Rostilj","id_tipa":1,"vrsta":[]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"kolaci","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"palacinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"sa kremom","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"pice","kategorija":[{"id_kategorije":3,"kategorija":"vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"grasevina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"borovnica","cena":120,"id_vrste":24}]}]}]}}]');
-var idKonobara = "1";
-var idStola = "1";
+
 //
+//  var artikli;
+
+
 
 $(document).ready(function () {
 
+  $.getJSON("final.json", function (data) {
+    var artikli = data;
+  });
+
+  // artikli = JSON.stringify(artikli);
+  console.log(artikli);
 
   // generiše listu kategorija, tipova i proizvoda
   artikli.forEach(function (element) {
@@ -177,7 +185,52 @@ $(document).ready(function () {
 
 });
 
-function Naruci() {
+// function Naruci() {
+
+
+/*
+
+var loop = [];
+
+for(var x = 0; x < 10; x++){
+loop.push({value1: "value_a_" + x , value2: "value_b_" + x});
+}
+
+JSON.stringify({array: loop});
+
+
+{
+"porudzbenica": {
+"idKonobara": "1",
+"idStola": "1"
+},
+"detaljiPorudzbine": [
+{
+"idProizvoda": 1,
+"kolicina": 5
+},
+{
+"idproizvoda": 2,
+"kolicina": 3
+},
+{
+"idProizvoda": 5,
+"kolicina": 12
+}
+]
+}
+*/
+
+// console.log(narudzbina);
+// console.log($("#kon")[0].value);
+// console.log($("#sto")[0].value);
+
+// console.log(porudzbenica);
+
+
+
+function Poruci() {
+
   var naruci = $(".narudzbina");
   var narudzbina = [];
   for (var i = 0; i < naruci.length; i++) {
@@ -189,78 +242,33 @@ function Naruci() {
       narudzbina.push({ "idProizvoda": naruci[i].id, "Kolicina": naruci[i].value });
       // $this = $(naruci[i]);
 
-      /*
+      var idKonobara = $("#kon")[0].value;
+      var idStola = $("#sto")[0].value;
 
-      var loop = [];
+      var porudzbenica = {
+        "porudzbenica":
+        {
+          "idKonobara": idKonobara,
+          "idStola": idStola
+        },
+        "detaljiPorudzbine": narudzbina
+      };
 
-      for(var x = 0; x < 10; x++){
-      loop.push({value1: "value_a_" + x , value2: "value_b_" + x});
+      if (porudzbenica != '') {
+        // console.log(JSON.stringify(porudzbenica));
+        $.ajax({
+          // url: 'stolovi.html',
+          type: 'post',
+          dataType: 'json',
+          success: function (data) {
+            alert(data.msg);
+          },
+          data: JSON.stringify(porudzbenica)
+        });
       }
-
-      JSON.stringify({array: loop});
-
-
-      {
-  "porudzbenica": {
-    "idKonobara": "1",
-    "idStola": "1"
-  },
-  "detaljiPorudzbine": [
-    {
-      "idProizvoda": 1,
-      "kolicina": 5
-    },
-    {
-      "idproizvoda": 2,
-      "kolicina": 3
-    },
-    {
-      "idProizvoda": 5,
-      "kolicina": 12
     }
-  ]
-}
-
-
-
-
-      */
-
-
-    }
-
   }
-  // console.log(narudzbina);
-
-  var porudzbenica = {
-    "porudzbenica":
-    {
-      "idKonobara": idKonobara,
-      "idStola": idStola
-    },
-    "detaljiPorudzbine": narudzbina
-  };
-
-  if (narudzbina != "") {
-    // console.log(JSON.stringify(porudzbenica));
-    $.ajax({
-      // url: 'stolovi.html',
-      type: 'post',
-      dataType: 'json',
-      success: function (data) {
-        alert(data.msg);
-      },
-      data: JSON.stringify(porudzbenica)
-    });
-  }
-
 }
-
-
-
-
-
-
 
 // forma.forEach(function(element) {
 //   console.log(this.id);
