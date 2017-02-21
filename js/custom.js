@@ -104,6 +104,7 @@ function Poruci() {
   for (var i = 0; i < naruci.length; i++) {
 
     if (naruci[i].value > 0) {
+      
       narudzbina.push({ "idProizvoda": naruci[i].id, "Kolicina": naruci[i].value });
     }
   }
