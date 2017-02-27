@@ -12,6 +12,21 @@
 </head>
 
 <body>
+  <!-- Login Modal -->
+  <!--<div id="login-overlay login-modal" class="login-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!-- Login Modal End -->
+
   <!-- Header -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -50,7 +65,7 @@
   </nav>
   <!-- Header End -->
   <!-- Category -->
-  <section>
+  <section class="main-section">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
@@ -64,15 +79,17 @@
       </div>
     </div>
   </section>
-  <div class="container">
+  <div class="container" id="naruci-dug">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3  col-lg-4 col-lg-offset-4">
-        <button class="btn btn-danger btn-lg btn-block" id="naruci" data-toggle="modal" data-target=".bs-example-modal-sm">naruci</button>
+        <button class="btn btn-danger btn-lg btn-block" id="naruci" onClick="Naruci()" data-toggle="modal">naruci</button>
       </div>
     </div>
   </div>
 
-  <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <!-- Modal -->
+
+  <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="potvrdiNarudzbinu">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -80,7 +97,7 @@
           <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
-          <table>
+          <table id="narudzbina">
             <tr>
               <th>
                 proizvod
@@ -92,23 +109,7 @@
                 cena
               </th>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              
-              <td>3</td>
-              <td>3</td>
-              <td>3</td>
-            </tr>
+
           </table>
         </div>
         <div class="modal-footer">
@@ -118,6 +119,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal End -->
 
   <!-- Category End -->
   <!-- Footer -->
@@ -145,10 +148,13 @@
   <!-- End Footer -->
   <!-- Custom JavaScript -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+  
   <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
 
 </body>

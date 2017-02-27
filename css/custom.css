@@ -1,8 +1,15 @@
 /* All Elements */
 
-*{margin: 0px; padding: 0px; box-sizing: border-box;}
+*{margin: 0px; padding: 0px; box-sizing: border-box; z-index: 0}
+
 
 /*body {padding: 65px 0px 50px;}*/
+
+/* Modal Settings */
+.login-modal-dialog {width:30%; margin: 0px auto; z-index: 50;}
+/*nav {display: none}*/
+/*section {display: none}*/
+/*#naruci-dug {display: none}*/
 
 /* Header */
 
