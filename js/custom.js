@@ -104,8 +104,10 @@ function Naruci() {
     // $('.modal-body').text(JSON.stringify(narudzbina));
     $('#narudzbina').html('<tr><th>proizvod</th><th>količina</th><th>cena</th></tr>');
     narudzbina.forEach(function (element) {
-      $('#narudzbina').append('<tr><td>' + element.proizvod + '</td><td><button class="btn btn-default " onclick="console.log($(\'.val\'));" type="button" role="button">+</button>' + element.kolicina + '<button class="btn btn-default " onclick="console.log($(".val"));" type="button" role="button">-</button></td></tr>');
+      $('#narudzbina').append('<tr><td>' + element.proizvod + '</td><td><button class="btn btn-default " onclick="console.log(\'hello world\');" type="button" role="button">+</button>' + element.kolicina + '<button class="btn btn-default " onclick="" type="button" role="button">-</button></td></tr>');
     })
+
+    // imaš id proizvoda koji šalješ kroz narudžbinu, upotrebi to da dođeš do input number polja pa mu menjaj vrednost sa + i -
   }
 
   // da resetuje vrednost polja, ali mora i da ažurira natpis i prikaže nulu
