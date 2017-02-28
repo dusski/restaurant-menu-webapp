@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0'>
+  <title>Demo</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="final.json">
+</head>
+
+<body>
+  <!-- Login Modal -->
+  <!--<div id="login-overlay login-modal" class="login-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!-- Login Modal End -->
+
+  <!-- Header -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!--       <a class="navbar-brand" href="#">Brand</a>-->
+      <div class="input-group navbar-search header">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-xs-5">
+              <select class="sto btn btn-danger" name="stolovi" id="sto">
+              <option value="1">Sto 1</option>
+              <option value="2">Sto 2</option>
+              <option value="3">Sto 3</option>
+              <option value="4">Sto 4</option>
+              <option value="5">Sto 5</option>
+            </select>
+            </div>
+            <div class="col-xs-2 " id="search">
+              <button class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+            <div class="col-xs-5 ">
+              <select class="konobar btn btn-info" name="konobar" id="kon">
+              <option value="1">Pera</option>
+              <option value="2">Mika</option>
+              <option value="3">Laza</option>
+            </select>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Search Polje -->
+        <!--<input type="text" class="form-control" placeholder=""> <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+        </span>-->
+      </div>
+      <!-- /input-group -->
+      <!-- /.col-lg-6 -->
+    </div>
+  </nav>
+  <!-- Header End -->
+  <!-- Category -->
+  <section class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+
+          <!--												generator block         -->
+          <ul class="accordion panel panel-default panel-group ">
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container" id="naruci-dug">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3  col-lg-4 col-lg-offset-4">
+        <button class="btn btn-danger btn-lg btn-block" id="naruci" onClick="Naruci();" data-toggle="modal">naruci</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+
+  <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="potvrdiNarudzbinu">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <table id="narudzbina">
+            
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Izmeni</button>
+          <button type="button" class="btn btn-success" onclick="Poruci();" data-dismiss="modal">Potvrdi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal End -->
+
+  <!-- Category End -->
+  <!-- Footer -->
+  <!--<section class="form" style="display: none;">
+    <form action="#" id="order" method="get">
+      
+      <button type="submit" class="order-submit"></button>
+
+    </form>
+  </section>-->
+
+  <!--
+	<section class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container-fluid">
+			<div class="content">
+				<ul class="nav nav-pills nav-justified">
+						<li role="presentation" class="active"><a href="#">Home</a></li>
+						<li role="presentation"><a href="#">Profile</a></li>
+						<li role="presentation"><a href="#">Messages</a></li>
+					</ul><a href="#" class="navbar-brand">Brand</a> </div>
+		</div>
+	</section>
+-->
+
+  <!-- End Footer -->
+  <!-- Custom JavaScript -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+
+</body>
+
+</html>
