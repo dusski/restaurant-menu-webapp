@@ -11,30 +11,36 @@
         * {
             font-size: 14pt;
         }
-        
+
         ul {
             list-style: none;
             padding: 0;
         }
-        
+
         ul .inner {
             overflow: hidden;
             display: none;
         }
-        
+
         ul .inner.show {
             display: block;
-            /*margin-top: -20px;*/
+            margin-top: -20px;
         }
-        
-        div .well {
+
+        .masonry {
+            /* Masonry container */
+            column-count: 4;
+            column-gap: 1em;
+        }
+
+        .well {
             border: black 1px solid;
             text-align: center;
             margin: 5px 5px;
-            display: table;
-            box-sizing: border-box;
-            float: left;
+            display: inline-block;
+            width: 100%;
         }
+        
     </style>
 </head>
 
@@ -50,7 +56,7 @@
 
         <div class="container">
             <div class="row">
-                <dir id="porudzbine"></dir>
+                <dir id="porudzbine" class="masonry"></dir>
             </div>
         </div>
     </section>
@@ -65,7 +71,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
-        var data = [{ "id": 121, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }];
+        var data = [{ "id": 121, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }];
 
         $(document).ready(function () {
 
@@ -87,7 +93,7 @@
 
                         for (var i = 0; i < categories[key].length; i++) {
                             var idPor = categories[key][0].id;
-                            var li = $('<div class="well list-group" id="' + idPor + '">').html('<span>' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
+                            var li = $('<span class="well list-group" id="' + idPor + '">').html('<span>' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
                             $('<li class="list-group-item">').html(categories[key][i].artikal + ', ' + categories[key][i].kolicina + ', ' + categories[key][i].cena).appendTo(ul_inner);
 
                             //$('<ul>').innerHtml(categories[key][i].konobar);
