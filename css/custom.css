@@ -23,6 +23,8 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
+td span {padding: 10px;}
+
 /* Header */
 .header {display: block;}
 .sto {display: block; width: 100%;}

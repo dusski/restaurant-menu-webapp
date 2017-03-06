@@ -60,6 +60,7 @@
             </div>
         </div>
     </section>
+    <div id="test"></div>
     <!-- Content End -->
 
 
@@ -75,6 +76,10 @@
 
         $(document).ready(function () {
 
+            setInterval(function () {
+                // window.location.reload();
+            }, 1000);
+
             var categories = [], groupBy = 'id', ul = $('#porudzbine');
 
             for (var i = 0; i < data.length; i++) {
@@ -82,6 +87,8 @@
                     categories[data[i][groupBy]] = [];
                 categories[data[i][groupBy]].push(data[i]);
             };
+
+           
 
 
             for (key in categories) {
@@ -106,6 +113,7 @@
                 }
 
             }
+
             $('.list-group').append('<button class="deletePor">hello world</button>');
             //  console.log
             $('.deletePor').click(function () {
@@ -127,6 +135,8 @@
             })
 
         });
+
+        
     </script>
 
 </body>
