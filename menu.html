@@ -236,7 +236,7 @@ function Naruci() {
     $('#narudzbina').html('<tr><th>proizvod</th><th>količina</th></tr>');
     var i = 0;
     narudzbina.forEach(function (element) {
-      $('#narudzbina').append('<tr class="modal-pro"><td>' + element.proizvod + '</td><td><button class="btn btn-lg btn-info" id="'+ i +'" onclick="Promena(this);">-</button><span>' + element.kolicina + '</span><button class="btn btn-lg btn-info" id="'+ i +'" onclick="Promena(this);">+</button><button class="btn btn-lg btn-danger" id="'+ i +'" onclick="Izbaci(this);" style="float:right;">x</button></td></tr>');
+      $('#narudzbina').append('<tr class="modal-pro"><td>' + element.proizvod + '</td><td><button class="btn btn-lg btn-info" id="'+ element.id_proizvoda +'" onclick="Promena(this);">-</button><span>' + element.kolicina + '</span><button class="btn btn-lg btn-info" id="'+ element.id_proizvoda +'" onclick="Promena(this);">+</button><button class="btn btn-lg btn-danger" id="'+ element.id_proizvoda +'" onclick="Izbaci(this);" style="float:right;">x</button></td></tr>');
       i++;
     })
   }
@@ -276,6 +276,7 @@ function Poruci() {
     // da resetuje vrednost polja, ali mora i da ažurira natpis i prikaže nulu
     for (var i = 0; i < naruci.length; i++) {
       naruci[i].value = 0;
+      narudzbina = [];
     }
     // da resetuje natpis u elementu
     var temp = $('input.proizvod');
@@ -304,13 +305,41 @@ function Promena(element) {
 }
 
 function Izbaci(element) {
-  console.log(element);
-  for (var i = 0; i < narudzbina.length; i++) {
-    if (narudzbina[i].id_proizvoda == element.id) {
+  var ovaj = element;
+  // console.log(element);
+  var polje = $("input#" + element.id);
+  console.log(polje[0].value);
+  // for (var i = 0; i < narudzbina.length; i++) {
+  //   if (narudzbina[i].id_proizvoda == element.id) {
+  //     // console.log("pre: " + polje[0].value);
+  //     polje[0].value = 0;
+  //     console.log("posle: " + polje[0].value);
+  //     narudzbina.splice(narudzbina[i], 1);
+  //     $(element).parent().parent().remove();
+
+  //     // polje.prev()[0].value = polje.prev()[0].defaultValue;
+    
+  //   //http://prntscr.com/egt8p2
+  //   }
+
+// e ovde nikako ne može preko indeksa da se odradi... mora na drugi način
+// ne nalazi 0ti element u osnovnim poljima kada je indeks nula
+
+  narudzbina.forEach(function(element, i) {
+    if (narudzbina[i].id_proizvoda == ovaj.id) {
+      // console.log("pre: " + polje[0].value);
+      polje[0].value = 0;
+      console.log("posle: " + polje[0].value);
       narudzbina.splice(narudzbina[i], 1);
-      $(element).parent().parent().remove();
+      $(ovaj).parent().parent().remove();
     }
-  }
+  });
+
+
+  
+
+  
+
  console.log(narudzbina);
 
 }
