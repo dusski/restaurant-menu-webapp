@@ -98,7 +98,7 @@
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
           <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
@@ -206,13 +206,13 @@
 
     if (this.innerHTML == "+") {
       plus.value++;
-      console.log(plus.value);
-      item_name.value = item_name.id + " (" + plus.value + ")"
+      // console.log(plus.value);
+      item_name.value = item_name.id + " (" + plus.value + ")";
     } else if (this.innerHTML == "-") {
       if (minus.value > 1) {
         minus.value--;
         item_name.value = item_name.id + " (" + minus.value + ")";
-        console.log(minus.id);
+        // console.log(minus.id);
       } else {
         minus.value = 0;
         item_name.value = item_name.id;
@@ -243,13 +243,8 @@ function Naruci() {
 }
 
 function Poruci() {
-  // var naruci = $(".narudzbina");
-  // var narudzbina = [];
-  // for (var i = 0; i < naruci.length; i++) {
-  //   if (naruci[i].value > 0) {
-  //     narudzbina.push({ "idProizvoda": naruci[i].id, "Kolicina": naruci[i].value });
-  //   }
-  // }
+  var naruci = $(".narudzbina");
+  
 
   var idKonobara = $("#kon")[0].value;
   var idStola = $("#sto")[0].value;
@@ -276,74 +271,77 @@ function Poruci() {
     // da resetuje vrednost polja, ali mora i da ažurira natpis i prikaže nulu
     for (var i = 0; i < naruci.length; i++) {
       naruci[i].value = 0;
-      narudzbina = [];
+      
     }
     // da resetuje natpis u elementu
     var temp = $('input.proizvod');
     for (var i = 0; i < temp.length; i++) {
       temp[i].value = temp[i].defaultValue;
     }
+    console.log(narudzbina);
+    narudzbina = [];
+    console.log(narudzbina);
   }
 }
 
 function Promena(element) {
   $element = $(element);
+  // console.log($element);
   if (element.innerHTML == "+") {
-    narudzbina[element.id].kolicina++;
-    $element.prev()[0].innerHTML = narudzbina[element.id].kolicina;
+    // console.log("plus");
+    narudzbina.forEach(function(item) {
+      if(item.id_proizvoda == element.id){
+        item.kolicina++;
+        $element.prev()[0].innerHTML = item.kolicina;
+        $("input#"+element.id).prev()[0].value = item.proizvod + " (" + item.kolicina + ")";
+      }
+    })
   
   } else if (element.innerHTML == "-") {
-    if (narudzbina[element.id].kolicina > 1) {
-        narudzbina[element.id].kolicina--;
-        $element.next()[0].innerHTML = narudzbina[element.id].kolicina;  
+    // console.log("minus");
+    narudzbina.forEach(function(item) {
+      if(item.id_proizvoda == element.id){
+        if (item.kolicina > 1) {
+        item.kolicina--;
+        $element.next()[0].innerHTML = item.kolicina;
+
+        $("input#"+element.id).prev()[0].value = item.proizvod + " (" + item.kolicina + ")";
       }
+      }
+      
+    })
+  
   } else {
-    console.log("Error!");
+    // console.log("Error!");
   }
   console.log(JSON.stringify(narudzbina));
 
 }
 
-function Izbaci(element) {
-  var ovaj = element;
-  // console.log(element);
-  var polje = $("input#" + element.id);
-  console.log(polje[0].value);
-  // for (var i = 0; i < narudzbina.length; i++) {
-  //   if (narudzbina[i].id_proizvoda == element.id) {
-  //     // console.log("pre: " + polje[0].value);
-  //     polje[0].value = 0;
-  //     console.log("posle: " + polje[0].value);
-  //     narudzbina.splice(narudzbina[i], 1);
-  //     $(element).parent().parent().remove();
-
-  //     // polje.prev()[0].value = polje.prev()[0].defaultValue;
+function Izbaci(element) {  
+narudzbina.forEach(function(item, i){
+  if (item.id_proizvoda == element.id){
+    narudzbina.splice(i, 1);
+    $(element).parent().parent().remove();
+    $("input#"+element.id).prev()[0].value = $("input#"+element.id).prev()[0].defaultValue;
+    $("input#"+element.id)[0].value = 0;
     
-  //   //http://prntscr.com/egt8p2
-  //   }
-
-// e ovde nikako ne može preko indeksa da se odradi... mora na drugi način
-// ne nalazi 0ti element u osnovnim poljima kada je indeks nula
-
-  narudzbina.forEach(function(element, i) {
-    if (narudzbina[i].id_proizvoda == ovaj.id) {
-      // console.log("pre: " + polje[0].value);
-      polje[0].value = 0;
-      console.log("posle: " + polje[0].value);
-      narudzbina.splice(narudzbina[i], 1);
-      $(ovaj).parent().parent().remove();
+  }
+  if (narudzbina.length == 0){
+      $('#potvrdiNarudzbinu').modal('hide');
     }
-  });
-
-
-  
+});
 
   
 
- console.log(narudzbina);
+  
+
+ console.log(JSON.stringify(narudzbina));
 
 }
 
+
+//http://pastebin.com/TygC4RkQ
   </script>
 
 </body>
