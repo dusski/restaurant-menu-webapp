@@ -27,7 +27,9 @@ td span {padding: 10px;}
 
 /* Header */
 .header {display: block;}
-.sto {display: block; width: 100%;}
+.sto-btn {display: block; width: 100%; }
+.sto {margin-left: -10%;}
+.sto span {position: inherit; color: dodgerblue;}
 
 .konobar {display: block; width: 100%;}
 .navbar-default {box-shadow: 0px 0.5px 25px grey;}
@@ -37,8 +39,14 @@ td span {padding: 10px;}
 .inline {display:flex; justify-content: space-between;}
 .search-field {margin-right: 8px; margin-bottom: 0px;}
 .top-nav{display: inline;}
+.prod-search {display: table;}
 
 /* Content */
+
+/* Modal za odabir stola */
+.sto-modal-header{border: none; text-align: center;}
+.sto-modal-body {display: table;}
+#odaberiSto {overflow-y:scroll;}
 
 /* Accordion */
 a, a:hover, a:visited, a:focus {text-decoration: none;color:#222222;}
@@ -54,7 +62,7 @@ h2{margin: 0px;}
 .tip, .tip:hover, .tip:active:hover, .tip:focus {background-color: #47AAFF; border-color: #47AAFF;}
 .kategorija, .kategorija:hover, .kategorija:active:hover, .kategorija:focus {background-color: #337AB7; border-color: #337AB7;}
 .vrsta, .vrsta:hover, .vrsta:active:hover, .vrsta:focus {background-color: #24557F; border-color: #24557F;}
-.proizvod, .proizvod:hover, .proizvod:active:hover, .proizvod:focus {background-color: #122A40; border-color: #122A40;}
+.proizvod, .proizvod:hover, .proizvod:active:hover, .proizvod:focus, .pr-kol, .pr-kol:hover, .pr-kol:active:hover, .pr-kol:focus  {background-color: #122A40; border-color: #122A40;}
 
 .proizvod .btn-group {display: inline-block;}
 .list-group {list-style: none;}
