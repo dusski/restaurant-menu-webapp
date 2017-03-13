@@ -39,7 +39,10 @@
             margin: 5px 5px;
             display: inline-block;
             width: 100%;
+            background-color: dodgerblue;
         }
+
+        .list-group-item {background-color: greenyellow;border: none;}
         
     </style>
 </head>
@@ -100,7 +103,7 @@
 
                         for (var i = 0; i < categories[key].length; i++) {
                             var idPor = categories[key][0].id;
-                            var li = $('<span class="well list-group" id="' + idPor + '">').html('<span>' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
+                            var li = $('<span class="well list-group" id="' + idPor + '">').html('<span>'+ idPor + ' - ' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
                             $('<li class="list-group-item">').html(categories[key][i].artikal + ', ' + categories[key][i].kolicina + ', ' + categories[key][i].cena).appendTo(ul_inner);
 
                             //$('<ul>').innerHtml(categories[key][i].konobar);

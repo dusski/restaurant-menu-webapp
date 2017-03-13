@@ -186,9 +186,9 @@
 
     $(document).ready(function () {
       // odaberi sto
-      var broj_stolova = 25;
+      var broj_stolova = 18;
       for (let i = 0; i < broj_stolova; i++) {
-        $(".sto-modal-body").append('<div class="col-xs-6"><div class="sto" id="'+ 'sto' + (i+1) + '" onclick="dodeliSto(this.id);"><span class="fa-stack fa-5x"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-cutlery fa-stack-1x fa-inverse"></i><span class=" fa-stack tbl-num"><i class="num">' + (i+1) + '</i></span></span></div></div>');
+        $(".sto-modal-body").append('<div class="col-xs-6"><div class="odaberiSto" id="'+ 'sto' + (i+1) + '" onclick="dodeliSto(this.id);"><span class="fa-stack fa-5x"><i class="fa fa-circle fa-stack-2x"></i><!--<i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>--><span class=" fa-stack tbl-num"><i class="num">' + (i+1) + '</i></span></span></div></div>');
       }
       //$('#odaberiSto').modal('show');
 
@@ -253,13 +253,14 @@
         if (this.value.length >= 3) {
           
           proizvodi.filter("[id*='"+ this.value + "']").parent().appendTo(".quick-search");
-        } else if (this.value.length < 2) {
+        } else if (this.value.length < 3 || this.value == "") {
+          // let vr_id = proizvodi.filter("[id*='"+ this.value + "']").parent()[0].id;
+          // proizvodi.filter("[id*='"+ this.value + "']").parent().appendTo("."+vr_id);
+          // console.log("here");
 
-        } else if (this.value.length < 3) {
-          let vr_id = proizvodi.filter("[id*='"+ this.value + "']").parent()[0].id;
-          proizvodi.filter("[id*='"+ this.value + "']").parent().appendTo("."+vr_id);
-          console.log("here");
-        } 
+          let vr_id = $('.quick-search').children()[0].id;
+          $(proizvodi[0]).parent().appendTo("." + vr_id);
+        }
       })
 
 
