@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -105,7 +105,7 @@
   <div class="container" id="naruci-dug">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3  col-lg-4 col-lg-offset-4">
-        <button class="btn btn-danger btn-lg btn-block" id="naruci" onClick="Naruci();" data-toggle="modal">naruci</button>
+        <button class="btn btn-danger btn-lg btn-block" id="naruci" onClick="Naruci();" data-toggle="modal">Naruči</button>
       </div>
     </div>
   </div>
@@ -180,17 +180,18 @@
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/defiant.js"></script>
   <script>
-  var data = $.parseJSON('{"artikli":[{"tip":{"id_tipa":1,"tip":"hrana","kategorija":[{"id_kategorije":6,"kategorija":"Rostilj","id_tipa":1,"vrsta":[]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"kolaci","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"palacinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"sa kremom","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"pice","kategorija":[{"id_kategorije":3,"kategorija":"vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"grasevina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"borovnica","cena":120,"id_vrste":24}]}]}]}}]}');
+  var data = $.parseJSON('{"artikli":[{"tip":{"id_tipa":1,"tip":"Hrana","kategorija":[{"id_kategorije":6,"kategorija":"Roštilj","id_tipa":1,"vrsta":[{"id_vrste":28,"vrsta":"Mleveno meso","id_kategorije":6,"proizvod":[{"id_proizvoda":9,"proizvod":"Ćevap","cena":50,"id_vrste":28},{"id_proizvoda":10,"proizvod":"Pljeskavica","cena":300,"id_vrste":28}]}]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[{"id_vrste":30,"vrsta":"Plava riba","id_kategorije":7,"proizvod":[{"id_proizvoda":8,"proizvod":"Pijani šaran","cena":2000,"id_vrste":30},{"id_proizvoda":11,"proizvod":"Losos","cena":3000,"id_vrste":30}]}]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"Kolači","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"Baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"Palačinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"Nutella","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"Piće","kategorija":[{"id_kategorije":3,"kategorija":"Vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"Bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"Graševina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"Crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"Vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"Tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"Gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"Coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"Gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"Borovnica","cena":120,"id_vrste":24}]}]}]}}]}');
     var narudzbina = [];
     var idStola = -1;
 
     $(document).ready(function () {
+      $('#odaberiSto').modal('show');
+
       // odaberi sto
       var broj_stolova = 18;
-      for (let i = 0; i < broj_stolova; i++) {
+      for (var i = 0; i < broj_stolova; i++) {
         $(".sto-modal-body").append('<div class="col-xs-6"><div class="odaberiSto" id="'+ 'sto' + (i+1) + '" onclick="dodeliSto(this.id);"><span class="fa-stack fa-5x"><i class="fa fa-circle fa-stack-2x"></i><!--<i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>--><span class=" fa-stack tbl-num"><i class="num">' + (i+1) + '</i></span></span></div></div>');
       }
-      //$('#odaberiSto').modal('show');
 
       // artikl generator
       data.artikli.forEach(function (element) {
@@ -203,7 +204,7 @@
             var vr_class = "vr" + element.id_vrste;
             $("." + kat_class).append('<li><button class="toggle btn btn-lg btn-primary btn-block vrsta" onclick="javascript:void(0);">' + element.vrsta + '</button><ul class="inner panel panel-default ' + vr_class + '">');
             element.proizvod.forEach(function (element) {
-              $("." + vr_class).append('<li><div class="input-group" id="' + vr_class + '"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-block btn-lg pr-kol">-</button></span><input type="text" id="' + element.proizvod + '" class="form-control btn btn-lg proizvod" value="' + element.proizvod + '" readonly><input type="number" class="narudzbina" hidden="hidden" id="' + element.id_proizvoda + '" value="0"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg pr-kol" role="button">+</button> </span> ');
+              $("." + vr_class).append('<li><div class="input-group" id="' + vr_class + '"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-block btn-lg pr-kol">-</button></span><input type="text" id="' + element.proizvod.toLowerCase() + '" class="form-control btn btn-lg proizvod" value="' + element.proizvod + '" readonly><input type="number" class="narudzbina" hidden="hidden" id="' + element.id_proizvoda + '" value="0"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg pr-kol" role="button">+</button> </span> ');
             });
           });
         });
@@ -222,51 +223,47 @@
         }
       });
 
+      // kolicina proizvoda
       $(".pr-kol").click(function (e) {
         var $this = $(this);
         var plus = $this.parent().prev()[0];
         var minus = $this.parent().next().next()[0];
         var item_name = typeof ($this.parent().prev().prev()[0]) == "undefined" ? $this.parent().next()[0] : $this.parent().prev().prev()[0];
-        var postoji = [];
 
         if (this.innerHTML == "+") {
           plus.value++;
-          // console.log(plus.value);
-          item_name.value = item_name.id + " (" + plus.value + ")";
+          item_name.value = item_name.defaultValue;
+          item_name.value += " (" + plus.value + ")";
         } else if (this.innerHTML == "-") {
           if (minus.value > 1) {
             minus.value--;
-            item_name.value = item_name.id + " (" + minus.value + ")";
-            // console.log(minus.id);
+            item_name.value = item_name.defaultValue;
+            item_name.value += " (" + minus.value + ")";
           } else {
             minus.value = 0;
-            item_name.value = item_name.id;
+            item_name.value = item_name.defaultValue;
           }
         } else {
           console.log("Error!");
         }
       });
 
+      // brza pretraga
       $("#quick-search").keyup(function (e) {
         e.preventDefault;
-        let proizvodi = $('.proizvod');
+        var proizvodi = $('.proizvod');
         if (this.value.length >= 3) {
-          
-          proizvodi.filter("[id*='"+ this.value + "']").parent().appendTo(".quick-search");
+          proizvodi.filter("[id*='"+ this.value.toLowerCase() + "']").parent().appendTo(".quick-search");
         } else if (this.value.length < 3 || this.value == "") {
-          // let vr_id = proizvodi.filter("[id*='"+ this.value + "']").parent()[0].id;
-          // proizvodi.filter("[id*='"+ this.value + "']").parent().appendTo("."+vr_id);
-          // console.log("here");
-
-          let vr_id = $('.quick-search').children()[0].id;
+          // ubaci for petlju da vrati sve elemente, a ne samo prvi
+          var vr_id = $('.quick-search').children()[0].id;
           $(proizvodi[0]).parent().appendTo("." + vr_id);
         }
       })
-
-
-
     });
 
+    // naruci
+    // prolazi kroz sva polja i izvlači listu proizvoda, a zatim je prikazuje u modalu
     function Naruci() {
       var naruci = $(".narudzbina");
       narudzbina = [];
@@ -277,21 +274,21 @@
       }
       if (narudzbina != '') {
         $('#potvrdiNarudzbinu').modal('toggle');
-        $('#narudzbina').html('<tr><th>proizvod</th><th>količina</th></tr>');
+        $('#narudzbina').html('<tr><th>Proizvod</th><th>Količina</th></tr>');
         var i = 0;
         narudzbina.forEach(function (element) {
           $('#narudzbina').append('<tr class="modal-pro"><td>' + element.proizvod + '</td><td><button class="btn btn-lg btn-info" id="' + element.id_proizvoda + '" onclick="Promena(this);">-</button><span>' + element.kolicina + '</span><button class="btn btn-lg btn-info" id="' + element.id_proizvoda + '" onclick="Promena(this);">+</button><button class="btn btn-lg btn-danger" id="' + element.id_proizvoda + '" onclick="Izbaci(this);" style="float:right;">x</button></td></tr>');
           i++;
         })
       }
+      console.log(JSON.stringify(narudzbina));
     }
 
+    // Poruci
+    // šalje podatke u bazu
     function Poruci() {
       var naruci = $(".narudzbina");
-
-
       var idKonobara = 1;
-      // var idStola = $("#sto")[0].value;
       var porudzbenica = {
         "porudzbenica":
         {
@@ -312,62 +309,54 @@
           },
           data: JSON.stringify(porudzbenica)
         });
-        // da resetuje vrednost polja, ali mora i da ažurira natpis i prikaže nulu
+        // da resetuje vrednost polja - količinu proizvoda
         for (var i = 0; i < naruci.length; i++) {
           naruci[i].value = 0;
-
         }
         // da resetuje natpis u elementu
         var temp = $('input.proizvod');
         for (var i = 0; i < temp.length; i++) {
           temp[i].value = temp[i].defaultValue;
         }
-        console.log(JSON.stringify(narudzbina));
         narudzbina = [];
-        console.log(narudzbina);
         $('#odaberiSto').modal('toggle');
       }
     }
 
-
-
-
+    // menjanje količine iz modala
     function Promena(element) {
       $element = $(element);
-      // console.log($element);
       if (element.innerHTML == "+") {
-        // console.log("plus");
         narudzbina.forEach(function (item) {
           if (item.id_proizvoda == element.id) {
             item.kolicina++;
             $("input#"+element.id)[0].value++;
+            // menja vrednost u modalu
             $element.prev()[0].innerHTML = item.kolicina;
-            $("input#" + element.id).prev()[0].value = item.proizvod + " (" + item.kolicina + ")";
+            // menja vrednost u glavnom delu
+            $("input#" + element.id).prev()[0].value = $("input#" + element.id).prev()[0].defaultValue;
+            $("input#" + element.id).prev()[0].value += " (" + item.kolicina + ")";
           }
         })
-
       } else if (element.innerHTML == "-") {
-        // console.log("minus");
         narudzbina.forEach(function (item) {
           if (item.id_proizvoda == element.id) {
             if (item.kolicina > 1) {
               item.kolicina--;
               $("input#"+element.id)[0].value--;
               $element.next()[0].innerHTML = item.kolicina;
-
-              $("input#" + element.id).prev()[0].value = item.proizvod + " (" + item.kolicina + ")";
-            }
+              // menja vrednost u glavnom delu
+              $("input#" + element.id).prev()[0].value = $("input#" + element.id).prev()[0].defaultValue;
+              $("input#" + element.id).prev()[0].value += " (" + item.kolicina + ")";
+              }
           }
-
         })
-
       } else {
         // console.log("Error!");
       }
-      console.log(JSON.stringify(narudzbina));
-
     }
 
+    // izbacuje element iz modala i briše ga iz narudžbine
     function Izbaci(element) {
       narudzbina.forEach(function (item, i) {
         if (item.id_proizvoda == element.id) {
@@ -375,43 +364,19 @@
           $(element).parent().parent().remove();
           $("input#" + element.id).prev()[0].value = $("input#" + element.id).prev()[0].defaultValue;
           $("input#" + element.id)[0].value = 0;
-
         }
         if (narudzbina.length == 0) {
           $('#potvrdiNarudzbinu').modal('hide');
         }
       });
-
-
-
-
-
-      console.log(JSON.stringify(narudzbina));
-
     }
 
+    // odabir stola
     function dodeliSto(id) {
       idStola = id.replace(/^\D+/g, "");
       $("#sto")[0].innerHTML = 'Sto ' + idStola;
       $('#odaberiSto').modal('hide');
-      
-      console.log(idStola);
     }
-
-
-//http://pastebin.com/TygC4RkQ
-
-
-// for search
-/*
-nađe proizvod koji sadrži neki string
-JSON.search(data.artikli, '//proizvod[contains(proizvod, "gra")]');
-
-stack overflow - Defiant.js How to pass dynamic variable to Search.JSON function
-http://stackoverflow.com/questions/42686587/defiant-js-how-to-pass-dynamic-variable-to-search-json-function
-
- */
-
   </script>
 
 </body>
