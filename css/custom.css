@@ -6,10 +6,13 @@
 /*body {padding: 65px 0px 50px;}*/
 
 /* Modal Settings */
-.login-modal-dialog {width:30%; margin: 0px auto; z-index: 50;}
-/*nav {display: none}*/
-/*section {display: none}*/
-/*#naruci-dug {display: none}*/
+#potvrdiNarudzbinu {
+    text-align: center;
+}
+
+#potvrdiNarudzbinu .modal-footer {
+    text-align: center;
+}
 
 /* Modal Table */
 table {
@@ -18,7 +21,7 @@ table {
 }
 
 th, td {
-    padding: 8px;
+    padding: 4px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -28,6 +31,8 @@ td::first-letter {
 }
 
 td span {padding: 10px;}
+
+table tr td .btn-lg, table tr td .btn-lg:focus, table tr td .btn-lg:hover {margin-bottom: 0px; }
 
 /* Header */
 .header {display: block;}

@@ -117,7 +117,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-          <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="gridSystemModalLabel">Narudžbina:</h4>
         </div>
         <div class="modal-body">
           <table id="narudzbina">
@@ -178,9 +178,9 @@
 
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/defiant.js"></script>
+  <script type="text/javascript" src="js/latinise.min.js"></script>
   <script>
-  var data = $.parseJSON('{"artikli":[{"tip":{"id_tipa":1,"tip":"Hrana","kategorija":[{"id_kategorije":6,"kategorija":"Roštilj","id_tipa":1,"vrsta":[{"id_vrste":28,"vrsta":"Mleveno meso","id_kategorije":6,"proizvod":[{"id_proizvoda":9,"proizvod":"Ćevap","cena":50,"id_vrste":28},{"id_proizvoda":10,"proizvod":"Pljeskavica","cena":300,"id_vrste":28}]}]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[{"id_vrste":30,"vrsta":"Plava riba","id_kategorije":7,"proizvod":[{"id_proizvoda":8,"proizvod":"Pijani šaran","cena":2000,"id_vrste":30},{"id_proizvoda":11,"proizvod":"Losos","cena":3000,"id_vrste":30}]}]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"Kolači","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"Baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"Palačinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"Nutella","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"Piće","kategorija":[{"id_kategorije":3,"kategorija":"Vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"Bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"Graševina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"Crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"Vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"Tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"Gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"Coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"Gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"Borovnica","cena":120,"id_vrste":24}]}]}]}}]}');
+  var data = $.parseJSON('{"artikli":[{"tip":{"id_tipa":1,"tip":"Hrana","kategorija":[{"id_kategorije":6,"kategorija":"Roštilj","id_tipa":1,"vrsta":[{"id_vrste":28,"vrsta":"Mleveno meso","id_kategorije":6,"proizvod":[{"id_proizvoda":9,"proizvod":"Ćevap","cena":50,"id_vrste":28},{"id_proizvoda":101,"proizvod":"Pljeskavica velika","cena":300,"id_vrste":28},{"id_proizvoda":102,"proizvod":"Pljeskavica srednja","cena":300,"id_vrste":28},{"id_proizvoda":103,"proizvod":"Pljeskavica mala","cena":300,"id_vrste":28},{"id_proizvoda":104,"proizvod":"Pljeskavica punjena","cena":300,"id_vrste":28},{"id_proizvoda":105,"proizvod":"Pljeskavica gurmanska","cena":300,"id_vrste":28}]}]},{"id_kategorije":7,"kategorija":"Riba","id_tipa":1,"vrsta":[{"id_vrste":30,"vrsta":"Plava riba","id_kategorije":7,"proizvod":[{"id_proizvoda":8,"proizvod":"Pijani šaran","cena":2000,"id_vrste":30},{"id_proizvoda":11,"proizvod":"Losos","cena":3000,"id_vrste":30}]}]},{"id_kategorije":9,"kategorija":"Poslastice","id_tipa":1,"vrsta":[{"id_vrste":25,"vrsta":"Kolači","id_kategorije":9,"proizvod":[{"id_proizvoda":6,"proizvod":"Baklava","cena":70,"id_vrste":25}]},{"id_vrste":26,"vrsta":"Palačinke","id_kategorije":9,"proizvod":[{"id_proizvoda":7,"proizvod":"Nutella","cena":100,"id_vrste":26}]}]}]}},{"tip":{"id_tipa":2,"tip":"Piće","kategorija":[{"id_kategorije":3,"kategorija":"Vina","id_tipa":2,"vrsta":[{"id_vrste":19,"vrsta":"Bela vina","id_kategorije":3,"proizvod":[{"id_proizvoda":3,"proizvod":"Graševina","cena":500,"id_vrste":19}]},{"id_vrste":20,"vrsta":"Crna vina","id_kategorije":3,"proizvod":[{"id_proizvoda":1,"proizvod":"Vranac","cena":500,"id_vrste":20},{"id_proizvoda":2,"proizvod":"Tamjanika","cena":500,"id_vrste":20}]}]},{"id_kategorije":5,"kategorija":"Sokovi","id_tipa":2,"vrsta":[{"id_vrste":23,"vrsta":"Gazirani","id_kategorije":5,"proizvod":[{"id_proizvoda":4,"proizvod":"Coca cola","cena":120,"id_vrste":23}]},{"id_vrste":24,"vrsta":"Gusti","id_kategorije":5,"proizvod":[{"id_proizvoda":5,"proizvod":"Borovnica","cena":120,"id_vrste":24}]}]}]}}]}');
     var narudzbina = [];
     var idStola = -1;
 
@@ -204,7 +204,7 @@
             var vr_class = "vr" + element.id_vrste;
             $("." + kat_class).append('<li><button class="toggle btn btn-lg btn-primary btn-block vrsta" onclick="javascript:void(0);">' + element.vrsta + '</button><ul class="inner panel panel-default ' + vr_class + '">');
             element.proizvod.forEach(function (element) {
-              $("." + vr_class).append('<li><div class="input-group" id="' + vr_class + '"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-block btn-lg pr-kol">-</button></span><input type="text" id="' + element.proizvod.toLowerCase() + '" class="form-control btn btn-lg proizvod" value="' + element.proizvod + '" readonly><input type="number" class="narudzbina" hidden="hidden" id="' + element.id_proizvoda + '" value="0"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg pr-kol" role="button">+</button> </span> ');
+              $("." + vr_class).append('<li><div class="input-group" id="' + vr_class + '"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-block btn-lg pr-kol">-</button></span><input type="text" id="' + element.proizvod.latinise().toLowerCase() + '" class="form-control btn btn-lg proizvod" value="' + element.proizvod + '" readonly><input type="number" class="narudzbina" hidden="hidden" id="' + element.id_proizvoda + '" value="0"><span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg pr-kol" role="button">+</button> </span> ');
             });
           });
         });
@@ -255,9 +255,18 @@
         if (this.value.length >= 3) {
           proizvodi.filter("[id*='"+ this.value.toLowerCase() + "']").parent().appendTo(".quick-search");
         } else if (this.value.length < 3 || this.value == "") {
+          var qsitems = $('.quick-search').children();
+          for (var i = qsitems.length; i > 0; i--) {
+            var vr_id = $('.proizvod').parent()[0].id;
+            // qsitems.shift();
+            // console.log(vr_id);
+            $(proizvodi[0]).parent().appendTo("." + vr_id);
+            proizvodi = $('.proizvod');
+          }
+
           // ubaci for petlju da vrati sve elemente, a ne samo prvi
-          var vr_id = $('.quick-search').children()[0].id;
-          $(proizvodi[0]).parent().appendTo("." + vr_id);
+          // var vr_id = $('.quick-search').children()[0].id;
+          
         }
       })
     });
