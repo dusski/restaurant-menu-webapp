@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" contnt="IE=edge">
     <meta name="viewport" content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0'>
     <title>Sank</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
     <style>
+        /*
         * {
             font-size: 14pt;
         }
@@ -28,7 +30,6 @@
         }
 
         .masonry {
-            /* Masonry container */
             column-count: 4;
             column-gap: 1em;
         }
@@ -42,20 +43,147 @@
             background-color: dodgerblue;
         }
 
-        .list-group-item {background-color: greenyellow;border: none;}
+        .list-group-item {background-color: greenyellow;border: none;}*/
+        /* Sticky Notes */
         
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: arial, sans-serif;
+            font-size: 100%;
+            margin: 1em;
+            background: #666;
+            color: #fff;
+        }
+        
+        h2,
+        p {
+            font-size: 100%;
+            font-weight: normal;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        ul {
+            overflow: hidden;
+            padding: 3em;
+        }
+        
+        ul li a {
+            text-decoration: none;
+            color: #000;
+            background: #ffc;
+            display: block;
+            /*height: 10em;*/
+            width: 10em;
+            padding: 1em;
+            -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
+            -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+            box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+            -moz-transition: -moz-transform .15s linear;
+            -o-transition: -o-transform .15s linear;
+            -webkit-transition: -webkit-transform .15s linear;
+        }
+        
+        ul li {
+            margin: 1em;
+            float: left;
+        }
+        
+        ul li h2 {
+            font-size: 140%;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+        
+        ul li p {
+            font-family: "Reenie Beanie", arial, sans-serif;
+            font-size: 180%;
+        }
+        
+        ul li a {
+            -webkit-transform: rotate(-6deg);
+            -o-transform: rotate(-6deg);
+            -moz-transform: rotate(-6deg);
+        }
+        
+        ul li:nth-child(even) a {
+            -o-transform: rotate(4deg);
+            -webkit-transform: rotate(4deg);
+            -moz-transform: rotate(4deg);
+            position: relative;
+            top: 5px;
+            background: #cfc;
+        }
+        
+        ul li:nth-child(3n) a {
+            -o-transform: rotate(-3deg);
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            position: relative;
+            top: -5px;
+            background: #ccf;
+        }
+        
+        ul li:nth-child(5n) a {
+            -o-transform: rotate(5deg);
+            -webkit-transform: rotate(5deg);
+            -moz-transform: rotate(5deg);
+            position: relative;
+            top: -10px;
+        }
+        
+        ul li a:hover,
+        ul li a:focus {
+            box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+            -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+            -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+            -webkit-transform: scale(1.25);
+            -moz-transform: scale(1.25);
+            -o-transform: scale(1.25);
+            position: relative;
+            z-index: 5;
+        }
+        
+        ol {
+            text-align: center;
+        }
+        
+        ol li {
+            display: inline;
+            padding-right: 1em;
+        }
+        
+        ol li a {
+            color: #fff;
+        }
+
+        .small-text {
+            font-size: 20px;
+        }
+
+        i {
+            float:right;
+        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-default">
+    <!--<nav class="navbar navbar-default">
         <div class="container-fluid">
         </div>
-    </nav>
+    </nav>-->
 
+    <!--  -->
     <!-- Content -->
-    <section>
+    <!--<section>
 
         <div class="container">
             <div class="row">
@@ -63,8 +191,13 @@
             </div>
         </div>
     </section>
-    <div id="test"></div>
+    <div id="test"></div>-->
     <!-- Content End -->
+
+    <!-- Sticky Notes -->
+    <ul id="sticky">
+        
+    </ul>
 
 
 
@@ -75,7 +208,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
-        var data = [{ "id": 121, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 122, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 123, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 126, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 127, "konobar": "mile", "sto": 1, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 130, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 132, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 133, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 134, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 135, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 136, "konobar": "mica", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }];
+        var data = [{ "id": 121, "konobar": "mile", "sto": 1, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 121, "konobar": "mile", "sto": 1, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 121, "konobar": "mile", "sto": 2, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 122, "konobar": "mile", "sto": 2, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 122, "konobar": "mile", "sto": 3, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 122, "konobar": "mile", "sto": 3, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 123, "konobar": "mile", "sto": 4, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 123, "konobar": "mile", "sto": 4, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 123, "konobar": "mile", "sto": 5, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 5, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 125, "konobar": "mile", "sto": 6, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 125, "konobar": "mile", "sto": 6, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 126, "konobar": "mile", "sto": 6, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 126, "konobar": "mile", "sto": 7, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 126, "konobar": "mile", "sto": 7, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 127, "konobar": "mile", "sto": 7, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 127, "konobar": "mile", "sto": 7, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 127, "konobar": "mile", "sto": 8, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 130, "konobar": "mica", "sto": 8, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 130, "konobar": "mica", "sto": 8, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 130, "konobar": "mica", "sto": 9, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 10, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 131, "konobar": "mica", "sto": 10, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 131, "konobar": "mica", "sto": 11, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 11, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 131, "konobar": "mica", "sto": 11, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 132, "konobar": "mica", "sto": 12, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 132, "konobar": "mica", "sto": 12, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 132, "konobar": "mica", "sto": 12, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 133, "konobar": "mica", "sto": 12, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 133, "konobar": "mica", "sto": 12, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 133, "konobar": "mica", "sto": 13, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 134, "konobar": "mica", "sto": 13, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 134, "konobar": "mica", "sto": 13, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 134, "konobar": "mica", "sto": 14, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 135, "konobar": "mica", "sto": 15, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 135, "konobar": "mica", "sto": 15, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 135, "konobar": "mica", "sto": 15, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }, { "id": 136, "konobar": "mica", "sto": 16, "artikal": "vranac", "kolicina": 5, "cena": 2500 }, { "id": 136, "konobar": "mica", "sto": 16, "artikal": "tamjanika", "kolicina": 3, "cena": 1500 }, { "id": 136, "konobar": "mica", "sto": 16, "artikal": "borovnica", "kolicina": 12, "cena": 1440 }];
 
         $(document).ready(function () {
 
@@ -83,7 +216,7 @@
                 // window.location.reload();
             }, 1000);
 
-            var categories = [], groupBy = 'id', ul = $('#porudzbine');
+            var categories = {}, groupBy = 'sto', ul = $('#porudzbine');
 
             for (var i = 0; i < data.length; i++) {
                 if (!categories[data[i][groupBy]])
@@ -91,31 +224,67 @@
                 categories[data[i][groupBy]].push(data[i]);
             };
 
-           
+            // sticky
+
+            $.each(categories, function (sto) {
+                var sticky = $('<li>').append('<a id="sticky-note"><i class="fa fa-check done"></i><h1>' + categories[sto][0].sto + ' - ' + categories[sto][0].konobar + '</h1>');
+                $.each(categories[sto], function (el) {
+                    $('<p class="small-text">' + categories[sto][el].artikal + ' - ' + categories[sto][el].kolicina + '</p>').appendTo(sticky.children()[0]);
+                });
+                $('#sticky').append(sticky);
+            });
+
+            $(".done").click(function () {
+                alert('working' + this.id);
+            });
 
 
-            for (key in categories) {
-                if (categories.hasOwnProperty(key)) {
-                    //	var li = $('<li>').text('id: ' + key);
-                    // console.log(categories);
-                    if (categories[key].length) {
-                        var ul_inner = $('<ul>');
+            //  for (key in categories) {
+            //     if (categories.hasOwnProperty(key)) {
+            //         //	var li = $('<li>').text('id: ' + key);
+            //         // console.log(categories);
+            //         if (categories[key].length) {
+            //             var ul_inner = $('<a>');
 
-                        for (var i = 0; i < categories[key].length; i++) {
-                            var idPor = categories[key][0].id;
-                            var li = $('<span class="well list-group" id="' + idPor + '">').html('<span>'+ idPor + ' - ' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
-                            $('<li class="list-group-item">').html(categories[key][i].artikal + ', ' + categories[key][i].kolicina + ', ' + categories[key][i].cena).appendTo(ul_inner);
+            //             for (var i = 0; i < categories[key].length; i++) {
+            //                 var idPor = categories[key][0].id;
+            //                 var li = $('<li class="well list-group" id="' + idPor + '">').html('<span>'+ idPor + ' - ' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
+            //                 $('<p class="list-group-item">').html(categories[key][i].artikal + ', ' + categories[key][i].kolicina + ', ' + categories[key][i].cena).appendTo(ul_inner);
 
-                            //$('<ul>').innerHtml(categories[key][i].konobar);
-                        }
+            //                 //$('<ul>').innerHtml(categories[key][i].konobar);
+            //             }
 
-                        li.append(ul_inner);
-                    }
+            //             li.append(ul_inner);
+            //         }
 
-                    li.appendTo(ul);
-                }
+            //         li.appendTo('#sticky');
+            //     }
 
-            }
+            // }
+
+
+            // for (key in categories) {
+            //     if (categories.hasOwnProperty(key)) {
+            //         //	var li = $('<li>').text('id: ' + key);
+            //         // console.log(categories);
+            //         if (categories[key].length) {
+            //             var ul_inner = $('<ul>');
+
+            //             for (var i = 0; i < categories[key].length; i++) {
+            //                 var idPor = categories[key][0].id;
+            //                 var li = $('<span class="well list-group" id="' + idPor + '">').html('<span>'+ idPor + ' - ' + categories[key][0].sto + ' - ' + categories[key][0].konobar);
+            //                 $('<li class="list-group-item">').html(categories[key][i].artikal + ', ' + categories[key][i].kolicina + ', ' + categories[key][i].cena).appendTo(ul_inner);
+
+            //                 //$('<ul>').innerHtml(categories[key][i].konobar);
+            //             }
+
+            //             li.append(ul_inner);
+            //         }
+
+            //         li.appendTo(ul);
+            //     }
+
+            // }
 
             $('.list-group').append('<button class="deletePor">hello world</button>');
             //  console.log
@@ -138,8 +307,6 @@
             })
 
         });
-
-        
     </script>
 
 </body>
