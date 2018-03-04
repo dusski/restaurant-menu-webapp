@@ -1,3 +1,3 @@
 # restaurant-menu-webapp
 
-A restaurant ordering app built with jQuery
+A restaurant menu web application built with Bootstrap and jQuery
